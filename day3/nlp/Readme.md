@@ -18,3 +18,13 @@
     - 数据准确性,丰富性很重要
 - 大模型训练师
     LLM trainer
+
+## 25年AI的发展
+
+- openai 发布了SORA2 冲击 tiktok
+- 豆包植入了一键购买的内容 AI电商
+- openai 发布了 Atlas AI浏览器,冲击Google和BaiDU
+- to B 企业端 正在代替人工 AI Agents 正在提高效率 
+
+使用大模型搜索,解决问题 LLM 有比百度/taobao 有更好的**用户体验**
+很多用户用,资金和流量自然上涨.
