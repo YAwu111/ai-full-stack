@@ -1,0 +1,181 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* 业务代码 */
+body{
+    height:100vh;
+    background : #000 url('bg.jpg');
+}
+.starwars{
+    /* perspective: 支持3D 声明  是一个透视属性*/
+    perspective: 800px;
+    /* 保持3D 变换 */
+    transform-style: preserve-3d;
+    /* em是相对单位，是相对自生的字体大小 */
+    /* 默认大小是16px */
+    width:34em;
+    height:17em;
+    /* 绝对定位 */
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    /* css调试手法，背景颜色调试打法 */
+    /* background-color:red; */
+}
+img{
+    width: 100%;
+}
+.star,.wars,.byline{
+    position: absolute;
+
+}
+.star{
+    top:-0.75em;
+}
+.wars{
+    bottom:-0.5em;
+}
+.byline{
+    left:-2em;
+    right: -2em;
+    top: 45%;
+    /* background-color: green; */
+    color: aliceblue;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .4em;
+    font-size: 1.6em;
+}
+.star{
+    /* 动画属性 
+       star   animation-name 动作脚本
+       10s animation-duration
+       ease-out animation-timing-function
+       infinite animation-iteratio-count
+    */
+    animation: star 10s ease-out infinite;
+}
+.wars{
+    animation: wars 10s ease-out infinite;
+}
+.byline{
+    animation: byline 10s linear infinite;
+}
+.byline span{
+    display: inline-block;
+    animation: spin-letters 10s linear infinite;
+}
+/* 设计动作 动画的关键帧 */
+@keyframes star{
+    /* 每个关键帧写它的属性 */
+    0%{
+        opacity: 0;
+        transform:scale(1.5) translateY(-.75em);
+    }
+    20%{
+        opacity: 1;
+
+    }
+    89%{
+        opacity: 1;
+        transform:scale(1) ;
+    }
+    100%{
+        opacity: 0;
+        transform: translateZ(-1000em);
+    }
+}
+@keyframes wars{
+    0%{
+        opacity: 0;
+        transform: scale(1.5) translateY(-0.5em);
+    }
+    20%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 1;
+        transform: scale(1);
+    }
+    100%{
+        opacity: 0;
+        transform: translateZ(-1000em);
+    }
+}
+@keyframes byline{
+    0%{
+        transoform: translateZ(5em);
+    }
+    100%{
+        transform: translateZ(0);
+    }
+}
+@keyframes spin-letters{
+    0%,10%{
+        opacity: 0;
+        /* 跳钢管舞视觉感 */
+        transform: rotate(90deg);
+    }
+    30%{
+        opacity: 1;
+    }
+    70%,86%{
+        transform: rotateY(0);
+        opacity: 1;
+    }
+    95%,100%{
+        opacity: 0;
+    }
+}
