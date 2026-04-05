@@ -17,4 +17,5 @@ console.log(typeof str5,
     str5.valueOf(),
     Object.prototype.toString.call(str5)
 );
-console.log(str4.length,str5.length)
+// 为什么str4是一个简单数据类型却可以用length函数？
+console.log(str4.length,str5.length);
