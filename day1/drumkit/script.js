@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded',function(){
     // script文件应该放在文件底部
     // script会阻塞html加载
     function playSound(event){
-        console.log(event.keyCode,'////////////');
+        // console.log(event.keyCode,'////////////');
         let dataCode = event.keyCode;
         let element = document.querySelector('.word[data-key="'+dataCode+'"]');
         console.log(element); 
