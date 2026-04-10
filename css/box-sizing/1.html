@@ -9,12 +9,31 @@
             margin: 0;
             padding: 0;
         }
+        body{
+            height: 100vh;
+        }
+        .container{
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .box{
+            box-sizing: border-box;
+            padding: 10px;
+            margin: 0 10px;
+            border: 5px solid black;
+            display: inline-block;
+            width: 570px;
+            height: 100px;
+            background-color: green;
+        }
+        .box:nth-child(2){
+            background-color: yellow;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="box">1</div>
-        <div class="box">2</div>
+        <div class="box">1</div><div class="box">2</div>
     </div>
 </body>
 </html>

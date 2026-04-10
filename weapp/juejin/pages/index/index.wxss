@@ -1,0 +1,8 @@
+page{
+  height: 100vh;
+  background-color: red;
+}
+.container{
+  height: 100%;
+  box-sizing: border-box;
+}

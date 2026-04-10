@@ -1,2 +1,8 @@
 .env
 node_modules/
+你的安装路径/
+miniprogram_npm/
+project.config.json
+project.private.config.json
+package-lock.json
+package.json
