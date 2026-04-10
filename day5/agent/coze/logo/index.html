@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo 生成</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- layout居中 左右auto -->
+    <div class="container">
+        <!-- 一行 -->
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <form  name="appForm">
+                    <div class="form-grooup">
+                        <label for="titleInput">Bot名称:</label>
+                        <input type="text"
+                            id="titleInput"
+                            name="title"
+                            required
+                            class="form-control"
+                            placeholder="请输入名称"
+                        >
+                    </div>
+                    <div class="form-grooup">
+                        <label for="descInput">Bot描述:</label>
+                        <textarea
+                        name="desc"
+                        placeholder="请输入描述"
+                        class="form-control"
+                        id="descInput"
+                        rows="3"
+                        ></textarea>
+                        </div>
+                        <button class="btn btn-default btn-primary"
+                        id="submitBtn"
+                        type="submit"
+                        >生成图标</button>
+                </form>
+            </div>
+        </div>
+        <!-- DOM 动态插入logo  appenchild-->
+        <div class="row" id="logo"></div>
+    </div>
+    <script>
+        // import {OpenAI} from "openai";
+        // import dotenv from "dotenv";
+        // dotenv.config();
+        // let client = new OpenAI({
+        //     apiKey:process.env.OPENAI_API_KEY,
+        //     baseURL:'https://api.302.ai/v1'
+        // });
+        // form 可以用name查找
+        // document里可以自动的将表单作为集合进行处理
+        const oForm = document.forms["appForm"];
+        // console.log(oForm);
+        oForm.addEventListener("submit",function(e){
+            e.preventDefault();
+            // js里this多变
+            // 事件处理函数，this指向当前事件的目标元素
+            console.log(this);
+            const appName = this['title'].value;
+            // console.log(appName);
+            const appDesc = this['desc'].value;
+            // prompt 
+            const prompt = `
+            你是一个互联网大厂的Logo设计，需要设计一个移动应用的logo，
+                应用名称为 ${appName},
+                描述为${appDesc}.
+                设计一个高端，大气，上档次的Logo.
+                请确保设计方案适用于移动应用图标(App Icon)
+                `
+                // mjs应用ai生成
+                // const main = async (prompt)=>{
+                //     const response = await client.chat.completions.create({
+                //         models:"dalle-e-3",
+                //         message:[{
+                //             role:"user",
+                //             content:prompt
+                //         }],
+                //         n:1,
+                //         size:"1024x1024",
+                //         temperature:.8
+                //     })
+                //     console.log(response.data[0].url)
+                // }
+                // main(prompt);
+            fetch('https://api.agicto.cn/v1/images/generations',{
+                method:'POST',
+                headers:{
+                    'Authorization':'Bearer sk-OgXoDdo1STuUXwAcYL5yEPv56FloKDOvxTZoxRBAEL1No48T',
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({
+                    model:'dall-e-3',
+                    prompt,
+                    n:1,
+                    size:'1024x1024'
+                })
+            }).then(response => response.json())
+            .then(data =>{
+                console.log(data);
+                const img = document.createElement('img');
+                img.src = data.data[0].url;
+                img.onload = ()=>{
+                    document.getElementById('logo').appendChild(img);
+                }
+            })
+        })
+    </script>
+</body>
+</html>

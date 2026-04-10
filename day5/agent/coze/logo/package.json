@@ -1,0 +1,17 @@
+{
+  "name": "logo",
+  "version": "1.0.0",
+  "description": "- 选择合适的模型\r   dalle-e-3\r - prompt \r - bootstrap 样式库\r   .container PC layout  中间宽度， 左右margin: auto;\r   .form-group",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.4.1",
+    "openai": "^6.33.0"
+  }
+}
