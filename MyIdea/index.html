@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抛帽子接住动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: system-ui, sans-serif;
+        }
+
+        .scene {
+            position: relative;
+            width: 400px;
+            height: 500px;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: #a8d8ea;
+            transition: transform 0.2s;
+        }
+
+        .scene:active {
+            transform: scale(0.98);
+        }
+
+        /* 人物和帽子共用定位容器 */
+        .character, .hat {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;  /* 让点击穿透到场景 */
+        }
+
+        /* 人物固定在底部 */
+        .character {
+            bottom: 20px;
+            width: 160px;
+            height: auto;
+            z-index: 2;
+        }
+
+        /* 帽子起始位置在人物头部 */
+        .hat {
+            bottom: 180px;          /* 根据人物图片调整 */
+            width: 80px;
+            height: auto;
+            z-index: 3;
+            will-change: transform, bottom, left;
+            transition: none;       /* 由动画完全控制 */
+        }
+
+        /* 帽子抛出的动画 */
+        .hat.throwing {
+            animation: throwHat 1.2s cubic-bezier(0.45, 0.05, 0.2, 0.99) forwards;
+        }
+
+        @keyframes throwHat {
+            0% {
+                transform: translateX(-50%) rotate(0deg);
+                bottom: 180px;           /* 起始高度 */
+                left: 50%;
+                opacity: 1;
+            }
+            20% {
+                transform: translateX(-30%) rotate(15deg);
+                bottom: 350px;           /* 最高点 */
+                left: 65%;
+                opacity: 1;
+            }
+            40% {
+                transform: translateX(10%) rotate(-10deg);
+                bottom: 300px;
+                left: 75%;
+                opacity: 1;
+            }
+            60% {
+                transform: translateX(40%) rotate(20deg);
+                bottom: 250px;
+                left: 55%;
+                opacity: 1;
+            }
+            80% {
+                transform: translateX(-20%) rotate(-5deg);
+                bottom: 200px;
+                left: 45%;
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-50%) rotate(0deg);
+                bottom: 180px;           /* 回到起始位置 */
+                left: 50%;
+                opacity: 1;
+            }
+        }
+
+        /* 人物接帽子的庆祝动作（可选）*/
+        .character.catching {
+            animation: celebrate 0.4s ease-out;
+        }
+
+        @keyframes celebrate {
+            0%, 100% { transform: translateX(-50%) rotate(0deg); }
+            25% { transform: translateX(-55%) rotate(-5deg); }
+            75% { transform: translateX(-45%) rotate(5deg); }
+        }
+
+        /* 提示文字 */
+        .hint {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background: rgba(0,0,0,0.4);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 14px;
+            backdrop-filter: blur(5px);
+            z-index: 10;
+            white-space: nowrap;
+        }
+
+        /* 说明区域 */
+        .info {
+            margin-top: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .upload-section {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .upload-btn {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .upload-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .upload-btn input {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+        <!-- 图片上传区域 -->
+        <div class="upload-section">
+            <label class="upload-btn">
+                📷 更换人物
+                <input type="file" id="characterUpload" accept="image/*">
+            </label>
+            <label class="upload-btn">
+                🧢 更换帽子
+                <input type="file" id="hatUpload" accept="image/*">
+            </label>
+        </div>
+
+        <!-- 动画场景 -->
+        <div class="scene" id="scene">
+            <!-- 人物图片 -->
+            <img id="character" class="character" 
+                 src="imgs/image.png" 
+                 alt="人物">
+            
+            <!-- 帽子图片 -->
+            <img id="hat" class="hat" 
+                 src="imgs/hat.png" 
+                 alt="帽子">
+            
+            <div class="hint">👆 点击画面抛帽子</div>
+        </div>
+        
+        <div class="info">
+            <p style="opacity: 0.9; font-size: 14px;">点击场景 → 抛出帽子 → 自动接住</p>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const scene = document.getElementById('scene');
+            const hat = document.getElementById('hat');
+            const character = document.getElementById('character');
+            
+            // 状态管理
+            let isAnimating = false;
+            let animationTimer = null;
+
+            // 调整帽子初始位置（根据人物图片高度动态计算）
+            function adjustHatPosition() {
+                // 等待图片加载完成
+                if (character.complete && character.naturalHeight > 0) {
+                    const charHeight = character.offsetHeight;
+                    const charBottom = 20; // 人物距离底部距离
+                    // 假设帽子应该在人物顶部往下约 15% 的位置
+                    const hatOffset = charHeight * 0.25;
+                    hat.style.bottom = (charBottom + charHeight - hatOffset) + 'px';
+                } else {
+                    // 默认值
+                    hat.style.bottom = '180px';
+                }
+            }
+
+            // 更新动画关键帧中的高度值（保证帽子能回到新位置）
+            function updateKeyframes() {
+                const hatBottom = hat.style.bottom || '180px';
+                
+                // 动态创建 style 标签覆盖关键帧
+                let styleEl = document.getElementById('dynamic-keyframes');
+                if (!styleEl) {
+                    styleEl = document.createElement('style');
+                    styleEl.id = 'dynamic-keyframes';
+                    document.head.appendChild(styleEl);
+                }
+                
+                styleEl.textContent = `
+                    @keyframes throwHat {
+                        0% {
+                            transform: translateX(-50%) rotate(0deg);
+                            bottom: ${hatBottom};
+                            left: 50%;
+                            opacity: 1;
+                        }
+                        20% {
+                            transform: translateX(-30%) rotate(15deg);
+                            bottom: 350px;
+                            left: 65%;
+                            opacity: 1;
+                        }
+                        40% {
+                            transform: translateX(10%) rotate(-10deg);
+                            bottom: 300px;
+                            left: 75%;
+                            opacity: 1;
+                        }
+                        60% {
+                            transform: translateX(40%) rotate(20deg);
+                            bottom: 250px;
+                            left: 55%;
+                            opacity: 1;
+                        }
+                        80% {
+                            transform: translateX(-20%) rotate(-5deg);
+                            bottom: 200px;
+                            left: 45%;
+                            opacity: 1;
+                        }
+                        100% {
+                            transform: translateX(-50%) rotate(0deg);
+                            bottom: ${hatBottom};
+                            left: 50%;
+                            opacity: 1;
+                        }
+                    }
+                `;
+            }
+
+            // 执行抛帽子动画
+            function throwHat() {
+                if (isAnimating) return;
+                
+                // 清除之前的定时器和动画类
+                if (animationTimer) clearTimeout(animationTimer);
+                hat.classList.remove('throwing');
+                character.classList.remove('catching');
+                
+                // 强制重绘
+                void hat.offsetWidth;
+                
+                // 更新关键帧中的位置参数
+                updateKeyframes();
+                
+                // 开始动画
+                isAnimating = true;
+                hat.classList.add('throwing');
+                
+                // 动画结束后触发接住效果
+                animationTimer = setTimeout(() => {
+                    hat.classList.remove('throwing');
+                    character.classList.add('catching');
+                    
+                    // 庆祝动画结束后重置状态
+                    setTimeout(() => {
+                        character.classList.remove('catching');
+                        isAnimating = false;
+                        animationTimer = null;
+                    }, 400);
+                }, 1200); // 与动画时长一致
+            }
+
+            // 处理人物图片更换
+            function handleCharacterUpload(file) {
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    character.src = e.target.result;
+                    character.onload = () => {
+                        adjustHatPosition();
+                        updateKeyframes();
+                    };
+                };
+                reader.readAsDataURL(file);
+            }
+
+            // 处理帽子图片更换
+            function handleHatUpload(file) {
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    hat.src = e.target.result;
+                    // 保持帽子位置不变
+                };
+                reader.readAsDataURL(file);
+            }
+
+            // 初始化事件监听
+            function init() {
+                // 场景点击触发抛帽子
+                scene.addEventListener('click', (e) => {
+                    // 防止点到上传按钮的冒泡
+                    if (e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL') return;
+                    throwHat();
+                });
+
+                // 人物图片上传
+                document.getElementById('characterUpload').addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (file) handleCharacterUpload(file);
+                });
+
+                // 帽子图片上传
+                document.getElementById('hatUpload').addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (file) handleHatUpload(file);
+                });
+
+                // 图片加载完成后调整位置
+                character.onload = () => {
+                    adjustHatPosition();
+                    updateKeyframes();
+                };
+                
+                hat.onload = adjustHatPosition;
+
+                // 窗口大小变化时重新调整
+                window.addEventListener('resize', () => {
+                    adjustHatPosition();
+                    updateKeyframes();
+                });
+
+                // 初始调整
+                if (character.complete) {
+                    adjustHatPosition();
+                    updateKeyframes();
+                }
+            }
+
+            // 启动
+            init();
+        })();
+    </script>
+</body>
+</html>
