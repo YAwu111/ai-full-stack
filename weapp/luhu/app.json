@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/story/story"
+  ],
+  "tabBar": {
+    "selectedColor": "#000000",
+    "borderStyle": "white",
+    "backgroundColor": "#ededed",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "img/icon1.png",
+        "SelectedIconPath": "img/selectedicon1.png"
+      },
+      {
+        "text": "故事",
+        "pagePath": "pages/story/story",
+        "iconPath": "img/icon2.png",
+        "SelectedIconPath": "img/selectedicon2.png"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "路虎汽车",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
