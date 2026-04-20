@@ -1,0 +1,24 @@
+{
+    "users":[
+        {
+            "id":1,
+            "username":"陈萨达",
+            "hometown":"九江"
+        },
+        {
+            "id":2,
+            "username":"连但撒谎",
+            "hometown":"吉安"
+        },
+        {
+            "id":3,
+            "username":"大事件",
+            "hometown":"吉安"
+        },
+        {
+            "id":4,
+            "username":"萨德生产",
+            "hometown":"吉安"
+        }
+    ]
+}
