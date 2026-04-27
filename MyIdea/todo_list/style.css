@@ -1,0 +1,66 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background: url('淡粉色可爱背景图生成.png');
+    height: 100vh;
+}
+.container{
+    border: 2px solid black;
+    border-radius: 3%;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 600px;
+    height: 500px;
+}
+.main{
+    margin: 15px auto 0px;
+    width: 80%;
+    height: 60%;
+    position: relative;
+    text-align: center;
+}
+#content{
+    width: 90%;
+    height: 70%;
+}
+button{
+    display: inline-block;
+    margin: 8px auto 7px;
+    width: 80px;
+    height: 80px;
+}
+.lists{
+    margin: 15px auto 0px;
+    width: 80%;
+    max-height: 30%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.lists:hover{
+    scrollbar-width: thin;
+}
+.list{
+    border: 1px solid black;
+    border-radius: 5%;
+    line-height: 30px;
+    width: 95%;
+    position: relative;
+    margin: 8px auto;
+}
+.delete{
+    position: absolute;
+    right: 3px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    opacity: 0;
+}
+.list:hover .delete{
+    opacity: 1;
+    transition: .8s;
+}

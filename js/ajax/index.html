@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax 数据请求</title>
+</head>
+<body>
+    <ul id="memebers"></ul>
+    <script>
+        //js 异步主动请求数据 界面动态更新
+        // console.log(fetch('https://api.github.com/orgs/lemoncode/members'))
+        // url接口地址
+        // 网络请求 request
+        // response
+        // toJSON
+        // dom
+        // httpRequst XML? 可以主动发起http请求响应是XML ，现在是用JSON
+        const xhr = new XMLHttpRequest();
+        console.log(xhr.readyState,'---------------');
+        // 打开一个请求
+        xhr.open('GET','https://api.github.com/orgs/lemoncode/members',false);
+        // 真正发送出去了
+        console.log(xhr.readyState,'---------------');
+        xhr.send();
+        console.log(xhr.readyState,'---------------');
+        console.log(xhr.responseText);
+        // 事件监听
+        xhr.onreadystatechange = function(){
+            // status 200 响应状态码
+            //readyState 4 表示请求完成
+            console.log(xhr.readyState,'---------------');
+            if(xhr.status === 200 &&xhr.readyState === 4 ){
+                console.log(xhr.responseText);
+                const data = JSON.parse(xhr.responseText);
+                console.log(data);
+            }
+        }
+    </script>
+</body>
+</html>

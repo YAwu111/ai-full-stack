@@ -1,0 +1,72 @@
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --text: #111111;
+  --muted: #2a2a2a;
+  --border: #8d8d8d;
+  --button-bg: #f5f5f5;
+  --button-hover: #ebebeb;
+  --button-active: #dedede;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+
+.popup {
+  width: 288px;
+  min-height: 360px;
+  padding: 18px 18px 14px;
+}
+
+.popup__title {
+  margin: 0;
+  font-size: 38px;
+  line-height: 0.98;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.popup__description {
+  margin: 34px 0 36px;
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.popup__button {
+  width: 150px;
+  min-height: 86px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  background: var(--button-bg);
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 120ms ease, transform 120ms ease;
+}
+
+.popup__button:hover {
+  background: var(--button-hover);
+}
+
+.popup__button:active {
+  background: var(--button-active);
+  transform: scale(0.99);
+}
+
+.popup__status {
+  min-height: 22px;
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: #147a28;
+}
