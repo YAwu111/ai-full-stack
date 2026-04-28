@@ -1,0 +1,57 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    text-decoration: underline;
+}
+.HeadContainer{
+    background: url("head.jpg");
+    margin: 0 auto 20px;
+}
+.Title{
+    text-align: center;
+}
+#title{
+    font-weight: bold;
+}
+#subtitle{
+    font-weight: normal;
+}
+#MoreGet{
+    background-color: rgb(89, 230, 255);
+    height: 35px;
+    width: 80px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid rgb(253, 240, 240);
+    border-radius: 15%;
+}
+#MoreGet:hover::after{
+    content: "";
+    height: 180px;
+    font-size: 20px;
+    background-color: lightgreen;
+    /* transition: all .3s ease-in; */
+}
+.FooterContainer{
+    height: 200px;
+    width: 80%;
+    background-color: rgb(247, 247, 247);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 80px;
+}
+.BottomContent{
+    font-size: 8px;
+    line-height: 1.37777777;
+}
+#company{
+    font-weight: bold;
+}
