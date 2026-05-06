@@ -1,24 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>奶龙大王</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon.png" type="png"></link>
 </head>
 <body>
     <div class="container">
-        <header class="header">
+        <div class="layer1">
+            <header class="header">
             <div class="HeadContainer">
+                <section class="PageHeader" aria-label="页眉导航区">
+                    <div class="HeaderContainer">
+                        <nav class="site-nav" id="HeaderContent" aria-label="主导航">
+                            <a id="index" href="#title">首页</a>
+                            <span class="nav-separator" aria-hidden="true">|</span>
+                            <a id="CompanyCulture" href="#section-culture">企业文化</a>
+                            <span class="nav-separator" aria-hidden="true">|</span>
+                            <a id="about" href="#section-about">关于我们</a>
+                            <span class="nav-separator" aria-hidden="true">|</span>
+                            <a id="contact" href="#section-contact">联系我们</a>
+                        </nav>
+                    </div>
+                </section>
                 <section class="Title">
-                    <h1 class="HeadContent" id="title">奶龙大王</p>
-                    <h4 class="HeadContent" id="subtitle">奶龙值得信赖,值得拥有,值得评鉴</p>
+                    <h1 class="HeadContent" id="title">奶龙大王</h1>
+                    <h4 class="HeadContent" id="subtitle">奶龙值得信赖,值得拥有,值得评鉴</h4>
                 </section>
                 <button type="button" class="button" id="MoreGet">了解更多</button>
+                <section class="record">
+                    <div class="RecordContainer">
+                        <div class="CropLayer">
+                            <img src="record1.svg" alt="" id="RecordImg">
+                        </div>
+                    </div>
+                </section>
             </div>
-        </header>
-        <main class="main"></main>
-        <footer class="footer">
+            </header>
+        </div>
+        <div class="layer2">
+            <main class="main" id="main-content">
+                <article class="theme-block theme-culture" id="section-culture" aria-labelledby="culture-heading">
+                    <header class="theme-block__header theme-culture__header">
+                        <p class="theme-block__eyebrow">Values</p>
+                        <h2 class="theme-block__title" id="culture-heading">企业文化</h2>
+                        <p class="theme-block__lead">以真诚与趣味连接每一位用户，让品牌既有温度也有态度。</p>
+                    </header>
+                    <div class="culture-grid">
+                        <section class="culture-card culture-card--mission">
+                            <h3 class="culture-card__title">使命</h3>
+                            <p class="culture-card__text">用轻松有趣的方式传递品质与信任，让「奶龙」成为大家愿意分享与推荐的名字。</p>
+                        </section>
+                        <section class="culture-card culture-card--vision">
+                            <h3 class="culture-card__title">愿景</h3>
+                            <p class="culture-card__text">成为兼具亲和力与专业度的标杆形象，在内容与体验上持续进化。</p>
+                        </section>
+                        <section class="culture-card culture-card--values">
+                            <h3 class="culture-card__title">价值观</h3>
+                            <ul class="culture-pills">
+                                <li>用户为先</li>
+                                <li>坦诚沟通</li>
+                                <li>小步快跑</li>
+                                <li>保持好奇</li>
+                            </ul>
+                        </section>
+                    </div>
+                </article>
+
+                <article class="theme-block theme-about" id="section-about" aria-labelledby="about-heading">
+                    <div class="about-layout">
+                        <aside class="about-rail" aria-hidden="true"></aside>
+                        <div class="about-body">
+                            <header class="theme-block__header theme-about__header">
+                                <p class="theme-block__eyebrow">Who we are</p>
+                                <h2 class="theme-block__title" id="about-heading">关于我们</h2>
+                                <p class="theme-block__lead">MilkDragon 团队专注形象塑造与互动体验，在视觉、叙事与产品气质上保持一致表达。</p>
+                            </header>
+                            <dl class="about-stats">
+                                <div class="about-stat">
+                                    <dt>成立</dt>
+                                    <dd>2024</dd>
+                                </div>
+                                <div class="about-stat">
+                                    <dt>项目</dt>
+                                    <dd>30+</dd>
+                                </div>
+                                <div class="about-stat">
+                                    <dt>合作方</dt>
+                                    <dd>持续增长</dd>
+                                </div>
+                            </dl>
+                            <ol class="about-timeline">
+                                <li><span class="about-timeline__year">2024</span> 品牌概念确立，核心视觉与故事线打磨。</li>
+                                <li><span class="about-timeline__year">2025</span> 多端内容上线，用户反馈驱动迭代。</li>
+                                <li><span class="about-timeline__year">2026</span> 拓展线下联动与社群活动，深化影响力。</li>
+                            </ol>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="theme-block theme-contact" id="section-contact" aria-labelledby="contact-heading">
+                    <div class="contact-shell">
+                        <header class="theme-block__header theme-contact__header">
+                            <p class="theme-block__eyebrow">Get in touch</p>
+                            <h2 class="theme-block__title" id="contact-heading">联系我们</h2>
+                            <p class="theme-block__lead">商务合作、媒体问询或建议反馈，欢迎通过以下方式找到我们。</p>
+                        </header>
+                        <div class="contact-grid">
+                            <div class="contact-card">
+                                <h3 class="contact-card__label">邮箱</h3>
+                                <p class="contact-card__value"><a href="mailto:hello@milkdragon.example">hello@milkdragon.example</a></p>
+                            </div>
+                            <div class="contact-card">
+                                <h3 class="contact-card__label">办公地址</h3>
+                                <p class="contact-card__value">示例市创意园区 A 座 8 层<br>（邮编与门牌可后续替换）</p>
+                            </div>
+                            <div class="contact-card">
+                                <h3 class="contact-card__label">工作时间</h3>
+                                <p class="contact-card__value">周一至周五 10:00–18:00<br>法定节假日休息</p>
+                            </div>
+                        </div>
+                        <form class="contact-form" action="#" method="get" aria-label="留言表单（演示）">
+                            <label class="contact-field">
+                                <span class="contact-field__label">称呼</span>
+                                <input type="text" name="name" autocomplete="name" placeholder="怎么称呼您">
+                            </label>
+                            <label class="contact-field">
+                                <span class="contact-field__label">邮箱</span>
+                                <input type="email" name="email" autocomplete="email" placeholder="name@example.com">
+                            </label>
+                            <label class="contact-field contact-field--full">
+                                <span class="contact-field__label">留言</span>
+                                <textarea name="message" rows="3" placeholder="简要说明您的需求或想法"></textarea>
+                            </label>
+                            <button type="button" class="contact-submit">发送（演示）</button>
+                        </form>
+                    </div>
+                </article>
+
+                <section class="SideBar" id="Left">
+                    <div class="SideBarContainer">
+                        <ul class="SideBarList">
+                            <li class="SideBarItem"><a href="./work.html" class="WorkDisplay">作品展示</a></li>
+                            <li class="SideBarItem"><a href="./server.html" class="ServiceCenter">服务中心</a></li>
+                            <li class="SideBarItem"><a href="./news.html" class="NewsCenter">新闻中心</a></li>
+                            <li class="SideBarItem"><a href="./FAQ.html" class="FAQ">FAQ</a></li>
+                            <li class="SideBarItem"><a href="./planning.html" class="EnterprisePlanning">企业规划</a></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="SideBar" id="Right">
+                    <div class="SideBarContainer" id="RightContainer">
+                        <a href="./AI.html" class="AIDispaly">AI功能展示</a>
+                        <a href="./message.html" class="MessageBoardDisplay">留言板</a>
+                    </div>
+                </section>
+            </main>
+            <footer class="footer">
             <div class="FooterContainer">
                 <section id="TouchUs">
                     <p class="BottomContent" id="Phone">联系我们:***——***——*****</p>
@@ -33,7 +174,9 @@
                     <a href="#" class="BottomContent" id="MoreInfrom">法律信息</a>
                 </section>
             </div>
-        </footer>
+            </footer>
+        </div>
+        <button type="button" class="button" id="backtoheadpage">⬆</button>
     </div>
     <script src="script.js"></script>
 </body>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品展示 - 奶龙大王</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f3fbfd;color:#133844}
+        .wrap{max-width:1100px;margin:0 auto;padding:28px 16px 40px}
+        .top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
+        .top a{color:#0b6070;text-decoration:none;font-weight:600}
+        h1{font-size:clamp(1.6rem,4vw,2.3rem)}
+        .lead{margin:10px 0 24px;color:#3a606d;line-height:1.7}
+        .nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+        .nav a{padding:8px 14px;border-radius:999px;text-decoration:none;color:#175262;background:#e6f8fc;border:1px solid #bcecf6}
+        .nav a.active{background:#59e6ff;color:#063945;border-color:#59e6ff;font-weight:700}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+        .card{background:white;border:1px solid #d9f0f5;border-radius:14px;padding:16px;box-shadow:0 8px 20px rgba(14,66,78,.08)}
+        .card h3{margin-bottom:8px}
+        .card p{font-size:.92rem;line-height:1.7;color:#466771}
+    </style>
+    <link rel="icon" href="icon.png" type="png"></link>
+</head>
+<body>
+    <div class="wrap">
+        <div class="top">
+            <h1>作品展示</h1>
+            <a href="./index.html">返回首页</a>
+        </div>
+        <p class="lead">这里展示奶龙大王近期的视觉创作、品牌联动与互动页面作品，可按主题持续扩展。</p>
+        <nav class="nav" aria-label="页面导航">
+            <a href="./work.html" class="active">作品展示</a>
+            <a href="./server.html">服务中心</a>
+            <a href="./news.html">新闻中心</a>
+            <a href="./FAQ.html">FAQ</a>
+            <a href="./planning.html">企业规划</a>
+        </nav>
+        <section class="grid">
+            <article class="card"><h3>品牌视觉项目</h3><p>包含主 KV、活动海报、角色延展设定与场景化素材。</p></article>
+            <article class="card"><h3>互动页面项目</h3><p>聚焦动画交互与信息引导，强调体验连贯和视觉节奏。</p></article>
+            <article class="card"><h3>多端适配项目</h3><p>兼顾移动端与桌面端展示效果，统一内容框架与风格语言。</p></article>
+        </section>
+    </div>
+</body>
+</html>

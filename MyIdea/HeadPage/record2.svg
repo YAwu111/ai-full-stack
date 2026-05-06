@@ -1,0 +1,36 @@
+<svg viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- 外圈 -->
+  <circle cx="100" cy="100" r="95" fill="#111"/>
+
+  <!-- 内圈 -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="#222" stroke-width="10"/>
+
+  <!-- 唱片纹理 -->
+  <g stroke="#2a2a2a" stroke-width="1">
+    <circle cx="100" cy="100" r="70" fill="none"/>
+    <circle cx="100" cy="100" r="65" fill="none"/>
+    <circle cx="100" cy="100" r="60" fill="none"/>
+    <circle cx="100" cy="100" r="55" fill="none"/>
+    <circle cx="100" cy="100" r="50" fill="none"/>
+    <circle cx="100" cy="100" r="45" fill="none"/>
+  </g>
+
+  <!-- 🔥 不对称高光（关键） -->
+  <ellipse cx="70" cy="60" rx="40" ry="20"
+           fill="white" opacity="0.08"
+           transform="rotate(-25 100 100)" />
+
+  <!-- 🔥 偏移的小装饰点（增强转动感） -->
+  <circle cx="140" cy="95" r="2" fill="#999"/>
+
+  <!-- 中心标签 -->
+  <circle cx="100" cy="100" r="30" fill="#e03131"/>
+
+  <!-- 🔥 label上的方向标记 -->
+  <path d="M100 75 L105 85 L95 85 Z" fill="#fff"/>
+
+  <!-- 中心孔 -->
+  <circle cx="100" cy="100" r="5" fill="#fff"/>
+
+</svg>

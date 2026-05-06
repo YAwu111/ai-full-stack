@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务中心 - 奶龙大王</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f3fbfd;color:#133844}
+        .wrap{max-width:1100px;margin:0 auto;padding:28px 16px 40px}
+        .top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
+        .top a{color:#0b6070;text-decoration:none;font-weight:600}
+        h1{font-size:clamp(1.6rem,4vw,2.3rem)}
+        .lead{margin:10px 0 24px;color:#3a606d;line-height:1.7}
+        .nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+        .nav a{padding:8px 14px;border-radius:999px;text-decoration:none;color:#175262;background:#e6f8fc;border:1px solid #bcecf6}
+        .nav a.active{background:#59e6ff;color:#063945;border-color:#59e6ff;font-weight:700}
+        .list{display:grid;gap:12px}
+        .item{background:#fff;border:1px solid #d9f0f5;border-radius:14px;padding:14px 16px}
+        .item h3{margin-bottom:6px}
+        .item p{font-size:.92rem;line-height:1.7;color:#466771}
+    </style>
+    <link rel="icon" href="icon.png" type="png"></link>
+</head>
+<body>
+    <div class="wrap">
+        <div class="top">
+            <h1>服务中心</h1>
+            <a href="./index.html">返回首页</a>
+        </div>
+        <p class="lead">面向合作方与用户提供标准化服务入口，包括咨询、定制、维护与反馈处理。</p>
+        <nav class="nav" aria-label="页面导航">
+            <a href="./work.html">作品展示</a>
+            <a href="./server.html" class="active">服务中心</a>
+            <a href="./news.html">新闻中心</a>
+            <a href="./FAQ.html">FAQ</a>
+            <a href="./planning.html">企业规划</a>
+        </nav>
+        <section class="list">
+            <article class="item"><h3>合作咨询</h3><p>提交需求背景与目标，我们将在 1-2 个工作日内回复评估建议。</p></article>
+            <article class="item"><h3>方案定制</h3><p>根据品牌定位与预算范围，提供分阶段执行方案与交付清单。</p></article>
+            <article class="item"><h3>售后维护</h3><p>上线后支持内容更新、问题排查与版本迭代，保障长期可用性。</p></article>
+        </section>
+    </div>
+</body>
+</html>

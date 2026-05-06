@@ -1,0 +1,51 @@
+<svg viewBox="0 0 240 240" width="240" height="240" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- 渐变定义 -->
+  <defs>
+    <!-- 外圈渐变 -->
+    <radialGradient id="vinylGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="70%" stop-color="#0d0d0d"/>
+      <stop offset="100%" stop-color="#000"/>
+    </radialGradient>
+
+    <!-- 高光 -->
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.15)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 外圈唱片 -->
+  <circle cx="120" cy="120" r="110" fill="url(#vinylGradient)" />
+
+  <!-- 纹理（更密一点） -->
+  <g stroke="#2a2a2a" stroke-width="0.8" fill="none">
+    <circle cx="120" cy="120" r="90"/>
+    <circle cx="120" cy="120" r="85"/>
+    <circle cx="120" cy="120" r="80"/>
+    <circle cx="120" cy="120" r="75"/>
+    <circle cx="120" cy="120" r="70"/>
+    <circle cx="120" cy="120" r="65"/>
+    <circle cx="120" cy="120" r="60"/>
+  </g>
+
+  <!-- 高光层 -->
+  <ellipse cx="90" cy="80" rx="70" ry="40" fill="url(#shine)" transform="rotate(-25 120 120)"/>
+
+  <!-- 中心 label（双色分区） -->
+  <g>
+    <circle cx="120" cy="120" r="40" fill="#e9ecef"/>
+    <path d="M80 120 A40 40 0 0 0 160 120 Z" fill="#74c0fc"/>
+  </g>
+
+  <!-- label 文字装饰线 -->
+  <g stroke="#333" stroke-width="1">
+    <line x1="95" y1="120" x2="145" y2="120"/>
+    <line x1="100" y1="135" x2="140" y2="135"/>
+  </g>
+
+  <!-- 中心孔 -->
+  <circle cx="120" cy="120" r="6" fill="#111"/>
+
+</svg>
