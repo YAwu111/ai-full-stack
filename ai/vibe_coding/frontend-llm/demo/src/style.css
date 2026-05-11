@@ -1,0 +1,143 @@
+/* 基础重置与变量 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-bg: #0f1419;
+  --color-surface: #1a2332;
+  --color-text: #e7ecf3;
+  --color-muted: #8b9cb3;
+  --color-accent: #3d8bfd;
+  --color-accent-hover: #5ba3ff;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+  --radius: 10px;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  color: var(--color-text);
+  background: radial-gradient(
+      ellipse 120% 80% at 50% -20%,
+      rgba(61, 139, 253, 0.18),
+      transparent
+    ),
+    var(--color-bg);
+}
+
+code {
+  font-size: 0.9em;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.container {
+  width: min(100% - 2rem, 42rem);
+  margin-inline: auto;
+}
+
+.site-header {
+  padding-block: 2.5rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.site-title {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.site-tagline {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 1rem;
+}
+
+.site-main {
+  padding-block: 2rem 3rem;
+}
+
+.card {
+  padding: 1.75rem;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.card h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+}
+
+.card__text {
+  margin: 0 0 1rem;
+  color: var(--color-muted);
+}
+
+.card__count {
+  margin: 0 0 1.25rem;
+  font-size: 1.1rem;
+}
+
+#counter {
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.btn {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 0.65rem 1.25rem;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn--primary {
+  color: #fff;
+  background: var(--color-accent);
+}
+
+.btn--primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.btn--primary:focus-visible {
+  outline: 2px solid var(--color-accent-hover);
+  outline-offset: 2px;
+}
+
+.site-footer {
+  padding-block: 1.5rem 2rem;
+  margin-top: auto;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-main {
+  flex: 1;
+}
