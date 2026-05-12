@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // fetch('https://api.github.com/users/shunyuwu/repos')
+        // .then(res => res.json())
+        // .then(data => {
+        //     console.log(data);
+        // })
+        // es8 async 修饰函数
+        const main = async ()=>{
+            // await 修饰异步任务 可以等待右边的异步任务完成
+            const res =await fetch('https://api.github.com/users/shunyuwu/repos');
+            console.log(res);
+            console.log(111);
+            const data = await res.json();
+            console.log(data);
+        }
+        main();
+    </script>
+</body>
+</html>
