@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const wes = Symbol('Wes');
+        const person = Symbol('Wes');
+        console.log(person == wes);
+
+        const obj = {
+            [Symbol('Mark')]:{grade:50,sex:'male'},
+            [Symbol('oliva')]:{grade:70,sex:'female'},
+            [Symbol('oliva')]:{grade:100,sex:'mechine'},
+            dl:["guowen","chenqianwen"]
+        }
+        // console.log(obj);
+
+
+        // Symbol 无法被枚举
+        for(const key in obj){
+            console.log(key,obj[key]);
+        }
+
+        const syms = Object.getOwnPropertySymbols(obj);
+        console.log(syms);
+
+        const data = syms.map(sym => obj[sym]);
+        console.log(data);
+    </script>
+</body>
+</html>
