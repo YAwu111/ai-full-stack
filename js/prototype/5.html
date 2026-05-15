@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        };
+        Person.prototype.species = '人类';
+        Person.prototype.sayHi = function (){
+            console.log(`你好，我是${this.name}`);
+        }
+        const su = new Person('书老板',19);
+        su.species = 'LOL达人'; // 实际上是在实例上设置属性，不是修改原型上的属性
+        // 如果实例上没有查找到species属性，就会去prototype上寻找species属性
+        console.log(su.species,su.__proto__);
+
+        // su怎么有toStirng方法？
+        console.log(su.toSring());
+        // Person.prototype 对象
+        console.log(su.__proto__.__proto__);
+    </script>
+</body>
+</html>

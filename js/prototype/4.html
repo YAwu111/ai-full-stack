@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // es5 没有class 抽象一个类的模板
+        // 属性 构造函数
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype = {
+            constructor:Person,
+            speci:'人类',
+            sayHi:function(){
+                console.log(`你好，我是${this.name}`);
+            }
+        }
+        const su = new Person('书老板',19);
+        console.log(su.__proto__ == Person.prototype);
+        console.log(Person.prototype.constructor === Person);
+        console.log(Object.getPrototypeOf(su) == Person.prototype);
+    </script>
+</body>
+</html>

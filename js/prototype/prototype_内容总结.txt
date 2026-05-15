@@ -1,0 +1,97 @@
+================================================================================
+  JavaScript 原型（prototype）学习资料 — 内容总结
+  路径：D:\project\js\js\prototype
+  依据：readme.md 与本目录下全部示例文件整理
+================================================================================
+
+一、readme.md 核心要点
+--------------------------------------------------------------------------------
+1. 教学主线（以「小米 SU7」类比）
+   - 用「类」的思路：构造函数 Car、new Car 得到实例。
+   - 实例各自的数据 + prototype 上的方法与属性（共享）。
+
+2. 构造函数（constructor 语境）
+   - 以 new 调用时，函数作为构造函数运行，this 指向新创建的对象。
+   - 在构造函数里通过 this 赋值的，属于「每个实例自己的」属性。
+
+3. prototype（原型对象）
+   - 挂在构造函数上的 prototype 对象，用于放「同类实例共享」的属性和方法。
+   - JavaScript 是「基于原型的面向对象」：不是传统 class 那种纯血缘模板，
+     而是通过 prototype 链实现复用与查找。
+   - 属性不必直接写在实例上，实例仍可通过原型链访问到 prototype 上的成员。
+   - 每个函数都有 prototype 属性，其值是一个对象；该对象上的成员被该构造函数
+     创建的所有实例共享。
+   - 传统 class：类是抽象模板，实例是具体对象；JS 则强调 prototype 链式查找。
+   - 对象有内部原型（readme 中提到的 __proto__ 为历史/调试用的访问方式），
+     指向其「原型对象」；默认原型对象上有 constructor 指回构造函数。
+   - 原型链终点：一般对象最终会链到 Object.prototype；再往上是 null，
+     表示没有更上层原型，属性查找到此停止。
+
+二、各文件内容与知识点
+--------------------------------------------------------------------------------
+【1.js】Car 构造函数示例（ES5 风格）
+   - 注释说明：ES5 无 class；函数为一等对象；首字母大写约定为构造函数。
+   - this.color：实例自有属性。
+   - Car.prototype 整体赋值为对象：drive 方法 + name/long/height/weight 等共享字段。
+   - new Car 得到 car1、car2，演示实例访问原型上的 name、long 及 drive()。
+
+【2.js】Person 与 __proto__
+   - 实例属性 name、age 在构造函数内定义。
+   - Person.prototype.speci：共享属性（注意示例里拼写为 speci）。
+   - console.log(person1.__proto__)：打印实例的原型（即 Person.prototype）。
+
+【3.html】constructor 与 __proto__ 的对应关系
+   - 注释：constructor + prototype 可对应理解「抽象的类」。
+   - 整块重写 Person.prototype 时显式写上 constructor: Person，避免丢失引用。
+   - 验证：su.__proto__ === Person.prototype；Person === Person.prototype.constructor。
+
+【4.html】标准写法与 Object.getPrototypeOf
+   - Person.prototype 对象内含 constructor、speci、sayHi。
+   - 验证原型：su.__proto__ == Person.prototype；
+     Person.prototype.constructor === Person；
+     Object.getPrototypeOf(su) == Person.prototype（推荐的标准 API）。
+
+【5.html】实例属性遮蔽原型属性 + 原型链上层
+   - 先在 prototype 上设 species；再在实例 su 上赋值 su.species，会在实例上
+     「遮蔽」原型同名属性（未改 prototype，只是实例自己多了一层属性）。
+   - 注释说明查找顺序：实例没有则去 prototype 上找。
+   - 脚本中演示 su 如何具备 toString 等：沿 __proto__.__proto__ 到 Object.prototype。
+   - 注意：示例代码里方法名存在拼写 toSring，与标准 toString 不一致，若运行会报错，
+     学习时应对照「意图是演示 Object.prototype 一层」来理解。
+
+【6.html】字面量对象与 Object
+   - const obj = { name, age } 等价于用 new Object() 创建普通对象的常见效果。
+   - console.log(obj.__proto__)：指向 Object.prototype。
+
+【7.html】原型链继承（Person 继承 Animal）
+   - Animal.prototype.species = '动物'。
+   - Person.prototype = new Animal()：把 Person 的原型设为 Animal 的实例，
+     从而 Person 实例可沿链找到 species。
+   - su.__proto__.__proto__：对应 Animal.prototype 一层，用于理解链式结构。
+
+三、贯穿本目录的一条逻辑线
+--------------------------------------------------------------------------------
+构造函数（this 上的东西 = 实例私有/各自一份）
+    +
+prototype（构造函数上的对象 = 方法与共享受量）
+    +
+new（把新对象的内部原型接到构造函数的 prototype）
+    +
+__proto__ / Object.getPrototypeOf（查看与验证「接在哪」）
+    +
+Object.prototype → null（链的终点）
+
+四、文件清单
+--------------------------------------------------------------------------------
+  readme.md    — 概念提纲与笔记
+  1.js         — Car + 整块 prototype
+  2.js         — Person + __proto__ 打印
+  3.html       — constructor 补全与三重相等验证
+  4.html       — sayHi + getPrototypeOf
+  5.html       — 属性遮蔽 + 链到 Object.prototype（注意 toString 拼写）
+  6.html       — 对象字面量与 __proto__
+  7.html       — Person.prototype = new Animal() 继承示例
+
+================================================================================
+  文档结束
+================================================================================

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // constructor + prototype = 抽象的类 
+        // Person.prototype 
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype={
+            constructor:Person,
+            speci:'人类'
+        };
+        const su = new Person('书老板',19);
+        console.log(su,su.__proto__);
+        console.log(su.__proto__ === Person.prototype);
+        // 构造函数
+        console.log(Person == Person.prototype.constructor);
+    </script>
+</body>
+</html>
