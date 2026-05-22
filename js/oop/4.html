@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Cat(name,color){
+            this.name = name;
+            this.color = color;
+        }
+        // constructor 在共享属性或方法面前有点孤木难支
+        Cat.prototype.eat = function(){
+            alert('喜欢Jerry');
+        }
+        Cat.prototype.type = '猫科动物';
+
+        const cat1 = new Cat('tom','黑色');
+        console.log(Cat.prototype.isPrototypeOf(cat1));
+
+        // 实例上的属性? prototype 上的属性？ 如何区分
+        console.log(cat1.hasOwnProperty('type'));
+        console.log(cat1.hasOwnProperty('name'));
+    </script>
+</body>
+</html>

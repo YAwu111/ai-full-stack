@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Animal(){
+            console.log(this);
+            this.species = '动物';
+        }
+        function Cat(name,color){
+            this.name = name;
+            this.color = color;
+        }
+
+        Cat.prototype = new Animal();
+        Cat.prototype.constructor = Cat;
+        // console.log(Cat.prototype);
+        // console.log(Cat);
+
+        const cat1 = new Cat('加菲猫','橘色');
+        console.log(cat1.species);
+    </script>
+</body>
+</html>
