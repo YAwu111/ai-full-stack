@@ -6,7 +6,7 @@ const endpoint = 'https://api.coze.cn/open_api/v2/chat';
 ipt.addEventListener('change',async e=>{
   const prompt = e.target.value;
   const payload = {
-    bot_id : '7642325424776790066',
+    bot_id : '76423254247766',
     name: '智能客服',
     user: 'mm',
     query: prompt,
@@ -21,7 +21,7 @@ ipt.addEventListener('change',async e=>{
     method: 'POST',
     headers:{
       'Content-Type': 'application/json',
-      'Authorization': `Bearer pat_BjMIhWTc6cz6yh1FsRGsxaOUO37mMpzYIPR0t3HNQCXzPhyM4756wgLzaEi9s1fu`
+      'Authorization': `Bearer pat_BjMIhWTc6cz6yh1FNQCXzPhyM4756wgLzaEi9s1fu`
     },
     body: JSON.stringify(payload)
   })
