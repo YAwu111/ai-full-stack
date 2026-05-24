@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+// B 是否出现在A的原型链上
+function isInstanceOf(left, right) {
+  let proto = left.__proto__;
+  while (proto) {
+    if (proto === right.prototype) {
+      return true;
+    }
+    proto = proto.__proto__; // null 结束循环
+  }
+  return false;
+}
+
+function Animal() {}
+function Cat() {}
+Cat.prototype = new Animal();
+function Dog() {}
+Dog.prototype = new Animal();
+const dog = new Dog()
+console.log(isInstanceOf(dog, Dog));
+console.log(isInstanceOf(dog, Animal));
+console.log(isInstanceOf(dog, Object));
+console.log(isInstanceOf(dog, Cat));
+</script>  
+</body>
+</html>
