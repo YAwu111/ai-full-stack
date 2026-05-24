@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var myObj = {
+            name:'即可时间',
+            showThis:function(){
+                this.name = '即可帮';
+                console.log(this);
+            }
+        }
+
+        var foo = myObj.showThis;
+        foo();
+        console.log(myObj.name);
+    </script>
+</body>
+</html>
