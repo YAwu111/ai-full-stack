@@ -1,0 +1,8 @@
+{
+    "emmet.includeLanguages": {
+      "vue": "html",
+      "vue-html": "html"
+    },
+  
+    "emmet.triggerExpansionOnTab": true
+  }
