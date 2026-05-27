@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承</title>
+</head>
+<body>
+    <script>
+        // 父类
+        function Animal(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        Animal.prototype.sepcies = '动物';
+        // 子类
+        function Cat(name,age,color){
+            Animal.call(this,name,age);
+            this.color = color;
+        }
+        const cat = new Cat('小猫',1,'白色');
+        console.log(cat);
+
+        Cat.prototype = Object.create(Animal.prototype);
+        
+        // 等价于下列代码
+        // function F (){};
+        // F.prototype = Animal.prototype;
+        // Cat.prototype = new F();
+
+        console.log(Cat.prototype);
+
+        // function A(){}
+        // A.prototype.arr = [1,2,3];
+
+        // const a1 = new A();
+        // const a2 = new A();
+        // a1.arr.push(4);
+        // console.log(a1.arr,a2.arr);
+    </script>
+</body>
+</html>
