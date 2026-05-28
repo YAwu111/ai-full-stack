@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+// 模拟new的功能
+// reset 运算符
+// function objectFactory(Constructor,...args) {
+//   // var obj = {};
+//   var obj = new Object(); // 从空对象开始
+//   Constructor.apply(obj, args);
+
+//   return obj;
+// }
+function objectFactory(...arguments) {
+  var obj = new Object(); // 从空对象开始
+  var Constructor = [].shift.call(arguments);
+  console.log(Constructor, arguments,
+  Object.prototype.toString.call(arguments)
+  );
+
+  Constructor.apply(obj, arguments);
+  obj.__proto__ = Constructor.prototype;
+  // console.log(arguments, arguments[0]);
+  // console.log(Object.prototype.toString.call(arguments))
+  // console.log(Object.prototype.toString.call([1,2,3]))
+  return obj;
+  // 函数在运行时的对象
+  
+}
+function Person(name, age) {
+  this.name = name
+  this.age = age
+}
+Person.prototype.species = '人类';
+Person.prototype.sayHi = function() {
+  console.log(`你好，我是${this.name}`)
+}
+let p = new Person('张三', 18);
+let zzp = objectFactory(Person, '郑志鹏', 18);
+// console.log(p, zzp);
+console.log(zzp.age, zzp.species);
+</script>
+</body>
+</html>
