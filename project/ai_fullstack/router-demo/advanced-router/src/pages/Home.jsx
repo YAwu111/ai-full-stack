@@ -1,5 +1,5 @@
 export default function Home(){
-    console.log('----- Home');
+    // console.log('----- Home');
     return (
         <>
             Home

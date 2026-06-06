@@ -1,24 +1,14 @@
 import{
-  BrowserRouter,
-  HashRouter,
-  Link,
-  Routes,
-  Route
+  BrowserRouter as Router,
 } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
+import Navigation from './components/Navigation.jsx'
+import RouterConfig from './router/index.jsx';
 
 export default function App(){
   return(
-    <HashRouter>
-      <nav>
-        <ul>
-          <li><Link to="#/">Home</Link></li>
-          <li><Link to="#/about">About</Link></li>
-        </ul>
-      </nav>
-      <Routes path="/" element={<Home />}></Routes>
-      <Routes path="/about" element={<About />}></Routes>
-    </HashRouter>
+    <Router>
+      <Navigation></Navigation>
+      <RouterConfig></RouterConfig>
+    </Router>
   )
 }
