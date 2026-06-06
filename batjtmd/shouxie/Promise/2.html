@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// const a =new Promise((resolve,reject) =>{
+//     reject(1);
+// })
+// const  t = a.catch(res => {
+//     res++;
+//     console.log(res+"---------1");
+//     return res;
+// });
+// console.log(2);
+// console.log(t);
+// t.then(res=>{res++
+//     console.log(res+"---------2");
+//     return res;
+// })
+//     .then(res => {
+//         res = res**2;
+//         console.log(res+"---------3");
+//         return res;
+//     })
+//     .then(res =>{
+//         res = res*2;
+//         console.log(res+"---------4");
+//         return res;
+//     })
+// console.log(1);
+class Bar {
+    constructor(c){
+        this.a =1;
+        c(()=>this.setA());
+    }
+
+    fn(){
+        console.log(this.a);
+    }
+
+    setA(){
+        this.a++;
+    }
+
+    foo(){
+        const b = new Bar((D)=>{
+            D();
+            console.log(this.a)
+        });
+
+    }
+}
+
+const d = new Bar(()=>{});
+d.foo();
+    </script>
+</body>
+</html>
+
+
